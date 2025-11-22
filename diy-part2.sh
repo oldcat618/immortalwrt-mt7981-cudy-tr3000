@@ -34,19 +34,15 @@ mv files/etc/openclash/core/clash files/etc/openclash/core/clash_meta
 chmod +x files/etc/openclash/core/clash_meta
 rm -f "clash_meta.tar.gz"
 
-# 创建存储二进制文件的目录
+
 BIN_DIR="$GITHUB_WORKSPACE/openwrt/files/usr/bin"
 mkdir -p "$BIN_DIR"
 
-# -------- 下载并解压 xray-core ARM64 -------
-echo "Downloading xray-core..."
 curl -L -o xray.zip https://github.com/XTLS/Xray-core/releases/download/v25.10.15/Xray-linux-arm64-v8a.zip
 unzip -o xray.zip -d "$BIN_DIR"
 chmod +x "$BIN_DIR/xray"
 rm xray.zip
 
-# -------- 下载并解压 sing-box ARM64 -------
-echo "Downloading sing-box..."
 curl -L -o sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.12.12/sing-box-1.12.12-linux-arm64.tar.gz
 TMP_DIR=$(mktemp -d)
 tar -xzf sing-box.tar.gz -C "$TMP_DIR"
